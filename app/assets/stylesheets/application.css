@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    background-image: url("http://voices.nationalgeographic.com/files/2014/01/shark.jpg");
+    background-repeat: no-repeat;
+}

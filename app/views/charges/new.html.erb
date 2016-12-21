@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col-md-6 col-md-offset-3">
+        <header class="text-center">
+            <h2 class="section-title fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.4s"> Feed The <span class="text-theme fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.8s">Sharks</span></h2>
+        </header>
+    </div>
+  </div>
+  <div class="row">
+      <br>
+    <br>
+    <br>
+    <br>
+    <center>    
+  <!-- CHARGE -->
+    <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <label class="amount">
+          <span>Amount: $5.00</span>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="One month's subscription, no recurring payments."
+              data-amount="500"
+              data-locale="auto"></script>
+    <% end %>
+  <!-- SUBSCRIPTION -->
+  <%= form_tag subscription_index_path do %>
+    <article>    
+      <label class=”amount”> 
+        <span>Subscription: $5.00/mo </span> 
+      </label> 
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key]  %>"
+            data-description="A month's subscription with recurring payments monthly."
+            data-amount="500"
+            data-locale="auto"></script>
+  <% end %>
+    </center>
+  </div>
+</div>
